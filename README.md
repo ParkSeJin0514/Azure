@@ -9,4 +9,5 @@
 - Azure DAY 5 : [09.02 Study](https://www.notion.so/psjrepository/DAY-35-2623d86ddbdc807d94d4d2f53ce428d2)
 - Azure DAY 6 : [09.03 Study](https://www.notion.so/psjrepository/DAY-36-2633d86ddbdc80298579d8fb8f80b0cd)
 ## Practice
-- Azure CLI Basic Commands : [09.02 Azure Commands](practice/01_Azure.md)
+- PowerShell Basic Commands : [09.03 PowerShell Commands](practice/01_Azure.md)
+- Azure CLI Commands : [09.03 Azure CLI Commands](practice/02_Azure.md)
