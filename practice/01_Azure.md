@@ -1,54 +1,101 @@
 # 📘 09.02 Azure
-### Azure CLI Basic Command
+## PowerShell CLI Commands
+### PowerShell Basic Commands
+
 ```bash
-# Azure CLI 버전 확인
-az --version
+# PowerShell 명령의 기본 형식
+Get-Service -Name w32time
 
-# Azure CLI 수동 업그레이드
-az upgrade
+# PowerShell 도움말 시스템
+Get-Help -Name [-detailed | -examples | -full | -online]
 
-# Azure CLI 자동 업그레이드
-az config set auto-upgrade.enable=yes
+Update-Help -Module ServerManager, Microsoft.PowerShell.LocalAccounts
 
-# 업그레이드 중 사용자 확인 인터럽트 방지
-az config set auto-upgrade.prompt=no
+Update-Help –UICulture ko-KR, en-US
 
-# 자동 업그레이드 해제
-az config set auto-upgrade.enable=no
+Update-Help –SourcePath \\Server01\Share\Help -Credential DokyunPC\steelflea
 
-# Azure 로그인
-az login --output table
-az login -o table
-az login --use-device-code
+Save-Help –Module ServerManager -DestinationPath "C:\PowerShell_Lab\SavePSHelp" -Credential Dokyun-PC\steelflea
 
-# Azure 로그아웃
-az logout
+# 도움말 보는 방법
+Get-Help -Name New-Alias -full
 
-# Azure 구독 목록 조회
-az account list -o table
+# PowerShell 명령을 찾고 빠르게 익히는 방법
+Get-Command -Verb Get* -Noun Net*
 
-# Azure 구독 변경
-az account set --subscription "b88f99b0-1f3c-4529-86c5-f80b227c53ac"
+Get-Help Get-NetAdapter -full
 
-# Azure 구독 정보 정리
-az account clear
+## 개체
+# 개체의 멤버 확인 방법
+Get-Process | get-Member –MemberType property, method
 
-# Azure 공급자 확인
-az provider show --namespace Microsoft.App | more
-az provider show --namespace Microsoft.DataMigration -o table
+Get-Process | get-Member –MemberType Properties
 
-# Azure 공급자 등록
-az provider register --namespace Microsoft.App
-az provider register --namespace Microsoft.DataMigration
-```
-### Azure CLI 구문 구성
-```bash
-# CLI 구문 구성
-az reference [reference subservice] command parameter
+## 파이프라인 시스템의 기본 개념
+Get-Process | Out-File e:\process.txt
 
-# CLI에서 리소스 그룹 생성
-az group create -l koreacentral -n rg-helloazure
+# 둘 이상의 개체가 혼합된 파이프라인 출력
+Get-ChildItem –Path C:\Windows | Get-Member
 
-# CLI에서 Public IP 생성
-az network public-ip create -n pip-helloazure -g rg-helloazure
+## 명령의 파이프라인 지원 방식 
+#ByValue를 사용한 바인딩
+'Dhcp','EFS' | Get-Service
+
+# ByPropertyName을 사용한 바인딩
+Get-Service | Stop-Process
+
+## 개체 선택 
+# 명령의 결과 제한하기 
+Get-Service | Select-Object –First 7
+ 
+Get-Service | Select-Object –Last 7
+
+Get-Service | Select-Object –skip 7
+
+Get-Process | Select-Object –index 0,3 
+
+Get-Process | Select-Object –index (3..6) 
+
+Get-Process | gm 
+
+# 표시할 속성 지정 
+Get-Process | Select-Object –Property Name,ID,PM,VM
+
+(Get-Process | Select-Object –Property Name,ID,PM,VM -Last 7)[0]
+
+# 사용자 지정 속성 사용하기
+Get-ChildItem | Select-Object -Property Name,@{n='Size(MB)'; e={$PSItem.Length/1MB}}
+
+Get-Volume | Select-Object -Property DriveLetter,Size,SizeRemaining 
+
+Get-Volume | Select-Object -Property DriveLetter,@{n='크기 정보';e={'전체 {0:N2} GB 
+/ 남음 {1:N2} GB / 사용률 {2:P1}' -f ($PSItem.Size/1GB), ($PSItem.SizeRemaining/1GB), (1 - ($PSItem.SizeRemaining / $PSItem.Size))}} | Sort-Object -Property DriveLetter -Descending
+
+# 결과
+DriveLetter 크기 정보
+----------- ---------
+          D 전체 195.31 GB / 남음 162.88 GB / 사용률 16.6%
+          C 전체 270.45 GB / 남음 58.14 GB / 사용률 78.5%
+          
+## 개체의 정렬과 계산 
+# 개체를 정렬하는 Sort-Object 
+Get-Process | Sort-Object -Property workingset
+
+# 개체 컬렉션을 계산하는 Measure-Object 
+Get-Process | Measure-Object –Property PM –Sum -Average
+
+"Hello PowerShell" | Measure-Object -Character
+ 
+## 개체 필터링 
+# 기본 필터링 기법
+Get-Service | Where-Object -Property Status –eq Running
+
+Get-Service | Where-Object -Property Name.Length –gt 7
+
+# 고급 필터링 기법 
+Get-Service | Where-Object -FilterScript {$PSItem.Name.Length -gt 7}
+Get-Service | Where-Object {$_.Name.Length -gt 7}
+Get-Service | ? {$_.Name.Length -gt 7} | select -last 7
+
+Get-Volume | Where-Object –Filter { $PSItem.HealthStatus –ne 'Healthy' -or $PSItem.SizeRemaining –lt 100MB } 
 ```
