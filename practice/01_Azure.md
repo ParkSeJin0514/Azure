@@ -1,4 +1,4 @@
-# 📘 08.20 Azure
+# 📘 09.02 Azure
 ### Azure CLI Basic Command
 ```bash
 # Azure CLI 버전 확인
