@@ -11,3 +11,4 @@
 ## Practice
 - PowerShell Basic Commands : [09.02 PowerShell Commands](practice/01_Azure.md)
 - Azure CLI Commands : [09.03 Azure CLI Commands](practice/02_Azure.md)
+- Azure Reverse Proxy : [09.04 Azure Proxy Server](practice/03_Azure.md)
