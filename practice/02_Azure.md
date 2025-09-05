@@ -1,5 +1,5 @@
 # 📘 09.03 Azure
-## Azure Create Server With CLI
+## 🧾 Azure Create Server With CLI
 ### Azure 방법 1
 ```bash
 # Azure CLI 버전 확인

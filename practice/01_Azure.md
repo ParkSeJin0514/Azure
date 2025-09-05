@@ -1,5 +1,5 @@
 # 📘 09.02 Azure
-## PowerShell CLI Commands
+## 🧾 PowerShell CLI Commands
 ### PowerShell Basic Commands
 
 ```bash

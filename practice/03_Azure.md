@@ -1,5 +1,5 @@
 # 📘 09.03 Azure
-## NGINX Reverse Proxy
+## 🖥 NGINX Reverse Proxy
 ### VM 생성 후 설정
 - Ubuntu Server 22.04 LTS 설치
 - NGINX 설치
