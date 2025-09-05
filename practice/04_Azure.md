@@ -4,7 +4,7 @@
 ```bash
 1. 스토리지 계정 만들기
 - 리소스 그룹 : rg-paaslab
-- 이름 : stimg[SUFFIX]
+- 이름 : stimgpsj
 - 위치 : East US
 - 성능 : 표준
 - 복제 : LRS
@@ -22,9 +22,9 @@ DefaultEndpointsProtocol
 5. API 웹 앱 만들기
 [기본]
 - 리소스 그룹 : rg-paaslab
-- 이름 : api[SUFFIX]
+- 이름 : apipsj
 - 게시 : 코드
-- 런타임 스택 : .NET 6 (LTS)
+- 런타임 스택 : .NET 8 (LTS)
 - 운영 체제 : windows
 - 위치 : East US
 - Windows 플랜 : 새로만들기 -> asp-windows
@@ -32,15 +32,14 @@ DefaultEndpointsProtocol
 Application Insights 사용 : 아니오
 
 6. 프런트엔드 웹 앱 만들기
-
 [기본]
 - 리소스 그룹 : rg-paaslab
-- 이름 : web[SUFFIX]
+- 이름 : webpsj
 - 게시 : 코드
-- 런타임 스택 : .NET 6 (LTS)
+- 런타임 스택 : .NET 8 (LTS)
 - 운영 체제 : windows
 - 위치 : East US
-- Windows 플랜 : asp-imgapp
+- Windows 플랜 : asp-windows
 [모니터링]
 - Application Insights 사용 : 아니오
 ```
