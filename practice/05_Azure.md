@@ -2,26 +2,20 @@
 ## 📦 Container
 ### Azure CLI로 Container 구축
 - Azure CLI로 SSH 연결
-
 ```bash
 az ssh arc
 ```
-
 - azcmagent 구성 수정
-
 ```bash
 azcmagent config set
 azcmagent config list
 ```
-
 - Azure CLI로 NHN Ubuntu Server로 연결
-
 ```bash
 az ssh arc --subscription "0e15e5c4-5af5-46fb-9ea3-8c1f11e002d5" --resource-group "rg-hybrid" --name "vmlinuxnhn" --local-user "ubuntu" --private-key-file [YOUR PRIVATE KEY]
 ```
-
+### Create Container
 - Azure Container
-
 ```bash
 # Azure에 연결 (또는 포털 로그)
 az login

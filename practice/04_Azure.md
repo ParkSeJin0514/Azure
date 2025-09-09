@@ -1,4 +1,4 @@
-# 📘 09.03 Azure
+# 📘 09.05 Azure
 ## 📳 App Service
 ### SSH Connect
 - Azure CLI로 SSH 연결
