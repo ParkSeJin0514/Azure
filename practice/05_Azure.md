@@ -1,4 +1,4 @@
-# 📘 09.03 Azure
+# 📘 09.09 Azure
 ## 📦 Container
 ### Azure CLI로 Container 구축
 - Azure CLI로 SSH 연결
